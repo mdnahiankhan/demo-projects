@@ -24,7 +24,6 @@ const MyTask = () => {
         return <Loading></Loading>
     }
     const handleDelete = task => {
-        console.log(task);
         fetch(`http://localhost:5000/task/${task}`, {
             method: 'DELETE',
         })
