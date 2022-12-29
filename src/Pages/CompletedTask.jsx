@@ -18,7 +18,7 @@ const CompletedTask = () => {
         queryKey: ['tasks'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/task')
+                const res = await fetch('https://demo-projects-server.vercel.app/task')
                 const data = await res.json();
                 return data;
             }
@@ -33,7 +33,7 @@ const CompletedTask = () => {
         return <Loading></Loading>
     }
     const handleDelete = task => {
-        fetch(`http://localhost:5000/task/${task}`, {
+        fetch(`https://demo-projects-server.vercel.app/task/${task}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -47,7 +47,7 @@ const CompletedTask = () => {
 
     return (
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
-            <h2 className="mb-4 text-2xl font-semibold leading-tight text-black">My Tasks</h2>
+            <h2 className="mb-4 text-2xl font-semibold leading-tight text-black">Completed Tasks</h2>
             <div className="overflow-x-auto">
                 <table className="min-w-full text-xs">
                     <thead className="dark:bg-gray-700">
@@ -63,7 +63,7 @@ const CompletedTask = () => {
                     </thead>
                     <tbody>
                         {
-                            tasks.map((task, i) => <tr key={task._id} className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-400 text-white">
+                            tasks.map((task, i) => <tr key={task._id} className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-400 text-black">
                                 <td className="p-3 text-lg">
                                     <p>{i + 1}</p>
                                 </td>
@@ -86,7 +86,7 @@ const CompletedTask = () => {
                                     <div className="flex flex-col mx-auto">
                                         <form onSubmit={handleSubmit(handleComment)} noValidate="">
                                             <input id="name" type="text" {...register('comment')} placeholder="Your Task" required="" className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-gray-900 dark:bg-gray-100" />
-                                            <button type="button" className="py-4 my-2 font-semibold rounded-md dark:text-gray-100 dark:bg-gray-800">Comment</button>
+                                            <button type="button" className="py-4 my-2 rounded-md dark:text-gray-100 font-bold">Comment</button>
                                         </form>
                                     </div>
                                 </td>

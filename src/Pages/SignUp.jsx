@@ -15,13 +15,13 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/')
                 toast('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/')
                     })
                     .catch(err => console.log(err))
             })

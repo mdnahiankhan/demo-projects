@@ -6,6 +6,33 @@ export const AuthContext = createContext();
 const auth = getAuth(app)
 
 const Authprovider = ({ children }) => {
+
+    const [dark, SetDark] = useState(false);
+
+    const handledark = () => {
+        SetDark(!dark);
+        localStorage.setItem("dark-mode", !dark);
+    }
+
+    useEffect(() => {
+        if (dark) {
+            document.querySelector("html").setAttribute("data-theme", "dark");
+        } else {
+            document.querySelector("html").setAttribute("data-theme", "tasktheme");
+        }
+    }, [dark])
+
+    useEffect(() => {
+        const localDark = JSON.parse(localStorage.getItem("dark-mode"));
+        console.log(localDark);
+        SetDark(localDark);
+    }, [])
+
+
+
+
+
+
     const [user, SetUser] = useState(null);
     const [loading, SetLoading] = useState(true)
     const createUser = (email, password) => {
@@ -39,6 +66,7 @@ const Authprovider = ({ children }) => {
         SignIn,
         LogOut,
         updateUser,
+        handledark,
         user,
         loading
     }

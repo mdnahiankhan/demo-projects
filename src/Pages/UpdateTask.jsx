@@ -26,7 +26,7 @@ const UpdateTask = () => {
                 if (imgdata.success) {
                     /* save to the database */
 
-                    fetch(`http://localhost:5000/task/${task._id}`, {
+                    fetch(`https://demo-projects-server.vercel.app/task/${task._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

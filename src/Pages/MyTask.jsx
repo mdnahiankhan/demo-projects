@@ -9,7 +9,7 @@ const MyTask = () => {
         queryKey: ['tasks'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/task')
+                const res = await fetch('https://demo-projects-server.vercel.app/task')
                 const data = await res.json();
                 return data;
             }
@@ -24,7 +24,7 @@ const MyTask = () => {
         return <Loading></Loading>
     }
     const handleDelete = task => {
-        fetch(`http://localhost:5000/task/${task}`, {
+        fetch(`https://demo-projects-server.vercel.app/task/${task}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

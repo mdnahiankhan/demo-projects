@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, } from 'react';
 import { Link } from 'react-router-dom';
 import TaskSvg from '../assets/TaskSvg.png'
 import { AuthContext } from '../contexts/Authprovider';
 const Navbar = () => {
-    const { user, LogOut } = useContext(AuthContext);
 
+    const { user, LogOut, handledark } = useContext(AuthContext);
     const handleLogOut = () => {
         LogOut()
             .then(() => { })
@@ -22,7 +22,7 @@ const Navbar = () => {
         <li className="flex">
             <Link to='/completedTask' rel="noopener noreferrer" href="" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Completed Task</Link>
         </li>
-        <label htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
+        <label onClick={handledark} htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
             <span>Left</span>
             <span className="relative">
                 <input id="Toggle1" type="checkbox" className="hidden peer" />

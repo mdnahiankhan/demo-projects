@@ -29,7 +29,7 @@ const AddTask = () => {
 
                     /* save to the database */
 
-                    fetch('http://localhost:5000/task', {
+                    fetch('https://demo-projects-server.vercel.app/task', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
